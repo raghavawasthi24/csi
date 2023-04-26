@@ -338,27 +338,6 @@ const Form = () => {
       }
       else {
         setLoading(true);
-        // axios.post("https://registrationcsi-production-9e8f.up.railway.app/accounts/register/", {
-
-        //   mobile_number: formvalues.mobile_number,
-        //   email: formvalues.email,
-        //   full_name: formvalues.full_name,
-        //   roll_no: formvalues.roll_no,
-        //   student_no: formvalues.student_no,
-        //   gender: formvalues.gender,
-        //   residence: formvalues.residence,
-        //   year: formvalues.year,
-        //   branch: formvalues.branch,
-        //   recaptcha: captcha_value,
-        //   contest: formvalues.contest,
-        //   desc:formvalues.Ideadescription
-        // }).then((res) => {
-        //   console.log(res);
-        //   setpopup(true)
-        // }).catch((err) => {
-        //   console.log(err);
-        // })
-        // console.log(formvalues);
         axios.post(`${process.env.REACT_APP_URL}/auth/register`, {
           name: formvalues.full_name,
           studentNo: formvalues.student_no,
@@ -381,7 +360,7 @@ const Form = () => {
           if (err.response.data === "false")
             toast.error("Captcha not validated!")
           else if (err.response.data === "Not Registered") {
-            toast.error("The mail has already been sent!")
+            toast.error("Already registered. Check email for verification!")
           }
           else if (err.response.data === "Too many requests, please try again later.") {
             toast.error("Please try again later!")
