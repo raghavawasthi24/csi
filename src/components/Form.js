@@ -21,6 +21,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import csilogo from "../assets/images/csi-logo.png";
 import ClockLoader from "react-spinners/ClockLoader";
+import { useRef } from 'react';
 // import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
@@ -120,20 +121,23 @@ const Form = () => {
   const [wordcount, setWordcount] = useState(0);
   const [popup, setpopup] = useState(false);
   let [loading, setLoading] = useState(false);
+  const captcharef=useRef();
   // const [word, setWord] = useState("")
 
- 
+
 
   const inputHandler = (e) => {
     if (e.target.name === "Ideadescription") {
       const { name, value } = e.target;
       setformvalues({ ...formvalues, [name]: value.slice(0, 300) });
+      
     }
     else {
       const { name, value } = e.target;
       setformvalues({ ...formvalues, [name]: value });
+      
     }
-    
+
   }
   const error = () => {
     errors = {}
@@ -156,6 +160,7 @@ const Form = () => {
     else {
       setnoerror(false);
       errors.full_name = "Please Enter Full Name";
+      captcharef.current?.reset();
       return errors;
     }
     //VALIDATING STUDENTNO
@@ -168,13 +173,14 @@ const Form = () => {
       //   if(formvalues.student_no.substring[2,formvalues.student_no.length-3]===code[i].code)
       //   formvalues.branch=branch_code[i];
       // }\
-      
+
 
 
     }
     else {
       setnoerror(false);
       errors.student_no = "Invalid Student No";
+      captcharef.current?.reset();
       return errors;
     }
 
@@ -187,6 +193,7 @@ const Form = () => {
     else {
       setnoerror(false);
       errors.roll_no = "Invalid Roll no";
+      captcharef.current?.reset();
       return errors;
     }
 
@@ -199,6 +206,7 @@ const Form = () => {
     else {
       setnoerror(false)
       errors.mobile_number = "Invalid Mobile Number";
+      captcharef.current?.reset();
       return errors;
     }
 
@@ -214,6 +222,7 @@ const Form = () => {
     else {
       setnoerror(false);
       errors.email = "Enter Correct College Email Id";
+      captcharef.current?.reset();
       return errors;
     }
 
@@ -222,6 +231,7 @@ const Form = () => {
     if (formvalues.branch === "") {
       setnoerror(false);
       errors.branch = "Please Select Branch";
+      captcharef.current?.reset();
       return errors;
     }
     else {
@@ -233,6 +243,7 @@ const Form = () => {
     if (formvalues.year === "") {
       setnoerror(false);
       errors.year = "Please Select Year";
+      captcharef.current?.reset();
       return errors;
     }
     else {
@@ -244,6 +255,7 @@ const Form = () => {
     if (formvalues.gender === "") {
       setnoerror(false);
       errors.gender = "Please Select Gender";
+      captcharef.current?.reset();
       return errors;
     }
     else {
@@ -255,6 +267,7 @@ const Form = () => {
     if (formvalues.contest === "") {
       setnoerror(false);
       errors.contest = "Please Select Contest";
+      captcharef.current?.reset();
       return errors;
     }
     else {
@@ -266,6 +279,7 @@ const Form = () => {
     if (formvalues.residence === "") {
       setnoerror(false);
       errors.residence = "This field can't be empty";
+      captcharef.current?.reset();
       return errors;
     }
     else {
@@ -275,6 +289,7 @@ const Form = () => {
     if (formvalues.contest === "Ideathon" && formvalues.Ideadescription === "") {
       errors.Ideadescription = "This field can't be empty";
       setnoerror(false);
+      captcharef.current?.reset();
       return errors;
     }
     else
@@ -295,18 +310,18 @@ const Form = () => {
   }
 
   const validateInput = (e, regex, err) => {
-    if (e.target.name==="student_no"){
+    if (e.target.name === "student_no") {
 
-      branch_code.map((item)=>{
+      branch_code.map((item) => {
         // console.log(item);
-        if( item.code === formvalues.student_no.substring(2,formvalues.student_no.length-3)){
+        if (item.code === formvalues.student_no.substring(2, formvalues.student_no.length - 3)) {
 
-      //  formvalues.branch = item.branch;
-       setformvalues({ ...formvalues, branch: item.branch })
-      }
-      return 0;
-    });
-  }
+          //  formvalues.branch = item.branch;
+          setformvalues({ ...formvalues, branch: item.branch })
+        }
+        return 0;
+      });
+    }
     if (regex.test(e.target.value.trim())) {
       e.target.value = e.target.value.trim();
       errors[e.target.name] = "";
@@ -387,7 +402,8 @@ const Form = () => {
     setpopup(false);
     setformvalues(initialvalues);
     // setcaptcha_value(null);
-    window.location.reload();
+    // window.location.reload();
+    captcharef.current?.reset();
     // localStorage.setItem("user","pending");
     // console.log("kbfhjklsjcbh ")
   }
@@ -639,6 +655,7 @@ const Form = () => {
               <div className="checkbox">
                 <div className='captcha recaptcha'>
                   <ReCAPTCHA
+                    ref={captcharef}
                     sitekey={`${process.env.REACT_APP_SITE_KEY}`}
                     onChange={validate_captcha}
                   />
