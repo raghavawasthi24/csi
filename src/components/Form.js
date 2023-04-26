@@ -524,7 +524,7 @@ const Form = () => {
                       value={formvalues.branch}
                       label="Branch"
                       name="branch"
-                      onChange={inputHandler}
+                      // onChange={inputHandler}
                       onBlur={e => { valdiatecheckbox(e, "Please Select Branch") }}
                     >
                       <MenuItem value="CSE">CSE</MenuItem>
@@ -554,7 +554,7 @@ const Form = () => {
                       value={formvalues.year}
                       label="Year"
                       name="year"
-                      onChange={inputHandler}
+                      // onChange={inputHandler}
                       onBlur={e => { valdiatecheckbox(e, "Please Select Year") }}
                     >
                       <MenuItem value="I">I</MenuItem>
