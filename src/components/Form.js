@@ -16,7 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material';
-import Poster from "../assets/images/g20.jpeg";
+import Poster from "../assets/images/latestposter.jpeg";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import csilogo from "../assets/images/csi-logo.png";
@@ -29,7 +29,7 @@ const Form = () => {
     breakpoints: {
       values: {
         xs: 0,
-        sm: 856,
+        sm: 1026,
         md: 900,
         lg: 1200,
         xl: 1536,
@@ -381,7 +381,7 @@ const Form = () => {
           if (err.response.data === "false")
             toast.error("Captcha not validated!")
           else if (err.response.data === "Not Registered") {
-            setpopup(true);
+            toast.error("The mail has already been sent!")
           }
           else if (err.response.data === "Too many requests, please try again later.") {
             toast.error("Please try again later!")
@@ -425,260 +425,252 @@ const Form = () => {
           />
         </div>
         <div className={loading ? "hide" : "formCont"}>
-          <form className='form' onSubmit={validateform}>
-            <h1>BRAINSTORM</h1>
-            <h2>Hey! Get Yourself Registered</h2>
-            <Grid container>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <TextField
-                  error={Boolean(formerror.full_name)}
-                  // required = {true}
-                  id="outlined-error-helper-text"
-                  label="Full Name"
-                  helperText={formerror.full_name}
-                  name="full_name"
-                  value={formvalues.full_name}
-                  onChange={inputHandler}
-                  size='small'
-                  style={{ width: "90%", margin: "0.5rem" }}
-                  onBlur={e => { validateInput(e, /^[a-zA-Z]{2,15}(\s[a-zA-Z.]{1,10})?(\s[a-zA-Z]{2,10})?(\s[a-zA-Z]{2,10})?$/, "Please Enter Full Name") }}
-
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <TextField
-                  error={Boolean(formerror.student_no)}
-                  id="outlined-error-helper-text"
-                  // required = {true}
-                  label="Student No"
-                  helperText={formerror.student_no}
-                  name="student_no"
-                  value={formvalues.student_no}
-                  onChange={inputHandler}
-                  size='small'
-                  style={{ width: "90%", margin: "0.5rem" }}
-                  // autoComplete='off'
-                  onBlur={e => { validateInput(e, /^[2][12](([x]{3})|[0-9]{2,3})([0-9]){3}(-d)?$/, "Invalid Student No") }}
-                />
-              </Grid>
-            </Grid>
-            <Grid container>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <TextField
-                  error={Boolean(formerror.roll_no)}
-                  id="outlined-error-helper-text"
-                  label="Roll No"
-                  // required = {true}
-                  helperText={formerror.roll_no}
-                  name="roll_no"
-                  value={formvalues.roll_no}
-                  onChange={inputHandler}
-                  size='small'
-                  style={{ width: "90%", margin: "0.5rem" }}
-                  // autoComplete='off'
-                  onBlur={e => { validateInput(e, /^[2][12][0][0][2][7][01]([0-9]){6}$/, "Invalid Roll No") }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <TextField
-                  error={Boolean(formerror.mobile_number)}
-                  id="outlined-error-helper-text"
-                  label="Phone Number"
-                  // required = {true}
-                  helperText={formerror.mobile_number}
-                  name="mobile_number"
-                  value={formvalues.mobile_number}
-                  onChange={inputHandler}
-                  size='small'
-                  style={{ width: "90%", margin: "0.5rem" }}
-                  // autoComplete='off'
-                  onBlur={e => { validateInput(e, /^[6-9]([0-9]){9}$/, "Invalid Mobile Number") }}
-                />
-              </Grid>
-            </Grid>
-            <Grid container>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <TextField
-                  error={Boolean(formerror.email)}
-                  id="outlined-error-helper-text"
-                  label="College Email"
-                  helperText={formerror.email}
-                  name="email"
-                  // required = {true}
-                  value={formvalues.email}
-                  onChange={inputHandler}
-                  size='small'
-                  style={{ width: "90%", margin: "0.5rem" }}
-                  // autoComplete='off'
-                  onBlur={e => { validateInput(e, /^([a-zA-Z]){2,15}[2][12](([x]{3})|[0-9]{2,3})([0-9]){3}(-d)?@akgec.ac.in$/, "Enter Correct College Email Id") }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <FormControl sx={{ width: "90%", m: "0.5rem" }} error={Boolean(formerror.branch)} size='small'>
-                  <InputLabel id="demo-simple-select-error-label">Branch</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-error-label"
-                    id="demo-simple-select-error"
-                    value={formvalues.branch}
-                    label="Branch"
-                    name="branch"
+          <div className='formdiv'>
+            <form className='form' onSubmit={validateform}>
+              {/* <h1>BRAINSTORM</h1> */}
+              <h2>Hey! Get Yourself Registered</h2>
+              <Grid container>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <TextField
+                    error={Boolean(formerror.full_name)}
+                    // required = {true}
+                    id="outlined-error-helper-text"
+                    label="Full Name"
+                    helperText={formerror.full_name}
+                    name="full_name"
+                    value={formvalues.full_name}
                     onChange={inputHandler}
-                    onBlur={e => { valdiatecheckbox(e, "Please Select Branch") }}
-                  >
-                    <MenuItem value="CSE">CSE</MenuItem>
-                    <MenuItem value="CSE(AI&ML)">CSE(AI&ML)</MenuItem>
-                    <MenuItem value="CSE(DS)">CSE(DS)</MenuItem>
-                    <MenuItem value="CS">CS</MenuItem>
-                    <MenuItem value="AI&ML">AI&ML</MenuItem>
-                    <MenuItem value="CSIT">CSIT</MenuItem>
-                    <MenuItem value="IT">IT</MenuItem>
-                    <MenuItem value="ECE">ECE</MenuItem>
-                    <MenuItem value="EN">EN</MenuItem>
-                    <MenuItem value="CSE(HINDI)">CSE(HINDI)</MenuItem>
-                    <MenuItem value="ME">ME</MenuItem>
-                    <MenuItem value="CE">CE</MenuItem>
-                  </Select>
-                  <FormHelperText>{formerror.branch}</FormHelperText>
-                </FormControl>
-              </Grid>
-            </Grid>
-            <Grid container>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <FormControl sx={{ width: "90%", margin: "0.5rem", }} error={Boolean(formerror.year)} size='small'>
-                  <InputLabel id="demo-simple-select-error-label">Year</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-error-label"
-                    id="demo-simple-select-error"
-                    value={formvalues.year}
-                    label="Year"
-                    name="year"
+                    size='small'
+                    style={{ width: "90%", margin: "0.5rem" }}
+                    onBlur={e => { validateInput(e, /^[a-zA-Z]{2,15}(\s[a-zA-Z.]{1,10})?(\s[a-zA-Z]{2,10})?(\s[a-zA-Z]{2,10})?$/, "Please Enter Full Name") }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <TextField
+                    error={Boolean(formerror.student_no)}
+                    id="outlined-error-helper-text"
+                    // required = {true}
+                    label="Student No"
+                    helperText={formerror.student_no}
+                    name="student_no"
+                    value={formvalues.student_no}
                     onChange={inputHandler}
-                    onBlur={e => { valdiatecheckbox(e, "Please Select Year") }}
-                  >
-                    <MenuItem value="I">I</MenuItem>
-                    <MenuItem value="II">II</MenuItem>
-                  </Select>
-                  <FormHelperText>{formerror.year}</FormHelperText>
-                </FormControl>
+                    size='small'
+                    style={{ width: "90%", margin: "0.5rem" }}
+                    // autoComplete='off'
+                    onBlur={e => { validateInput(e, /^[2][12](([x]{3})|[0-9]{2,3})([0-9]){3}(-d)?$/, "Invalid Student No") }}
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <FormControl sx={{ width: "90%", margin: "0.5rem", }} error={Boolean(formerror.gender)} size='small'>
-                  <InputLabel id="demo-simple-select-error-label">Gender</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-error-label"
-                    id="demo-simple-select-error"
-                    value={formvalues.gender}
-                    label="Gender"
-                    name="gender"
+              <Grid container>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <TextField
+                    error={Boolean(formerror.roll_no)}
+                    id="outlined-error-helper-text"
+                    label="Roll No"
+                    // required = {true}
+                    helperText={formerror.roll_no}
+                    name="roll_no"
+                    value={formvalues.roll_no}
                     onChange={inputHandler}
-                    onBlur={e => { valdiatecheckbox(e, "Please Select Gender") }}
-                  >
-                    <MenuItem value="Male">Male</MenuItem>
-                    <MenuItem value="Female">Female</MenuItem>
-                    <MenuItem value="Others">Others</MenuItem>
-                    {/* <MenuItem value="Rather Not To Say">Rather Not To Say</MenuItem> */}
-                  </Select>
-                  <FormHelperText>{formerror.gender}</FormHelperText>
-                </FormControl>
-              </Grid>
-            </Grid>
-            <Grid container>
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <FormControl sx={{ width: "90%", margin: "0.5rem", }} error={Boolean(formerror.contest)} size='small'>
-                  <InputLabel id="demo-simple-select-error-label">Contest</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-error-label"
-                    id="demo-simple-select-error"
-                    value={formvalues.contest}
-                    label="Contest"
-                    name="contest"
+                    size='small'
+                    style={{ width: "90%", margin: "0.5rem" }}
+                    // autoComplete='off'
+                    onBlur={e => { validateInput(e, /^[2][12][0][0][2][7][01]([0-9]){6}$/, "Invalid Roll No") }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <TextField
+                    error={Boolean(formerror.mobile_number)}
+                    id="outlined-error-helper-text"
+                    label="Phone Number"
+                    // required = {true}
+                    helperText={formerror.mobile_number}
+                    name="mobile_number"
+                    value={formvalues.mobile_number}
                     onChange={inputHandler}
-                    onBlur={e => { valdiatecheckbox(e, "Select your Contest") }}
-                  >
-                    <MenuItem value="Ideathon">Ideathon</MenuItem>
-                    <MenuItem value="Blind Coding">Blind Coding</MenuItem>
-
-                  </Select>
-                  <FormHelperText>{formerror.contest}</FormHelperText>
-                </FormControl>
+                    size='small'
+                    style={{ width: "90%", margin: "0.5rem" }}
+                    // autoComplete='off'
+                    onBlur={e => { validateInput(e, /^[6-9]([0-9]){9}$/, "Invalid Mobile Number") }}
+                  />
+                </Grid>
               </Grid>
-
-              {/* <Grid item xs={12} sm={6} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-
-              <FormControl sx={{ width: "90%", margin: "0.5rem 0" }} error={Boolean(formerror.residence)}>
-                <label>Is Hosteler?</label>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name='residence'
-                  value={formvalues.residence}
-                  onChange={inputHandler}
-                  style={{ display: "flex" }}
-                  className='label'
-                >
-                  <FormControlLabel value="true" control={<Radio />} label={<Typography className='label'>True</Typography>} />
-                  <FormControlLabel value="false" control={<Radio />} label={<Typography className='label'>False</Typography>} />
-                </RadioGroup>
-                <FormHelperText>{formerror.residence}</FormHelperText>
-              </FormControl>
-            </Grid> */}
-
-              <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
-                <FormControl sx={{ width: "90%", margin: "0.5rem", }} error={Boolean(formerror.residence)} size='small'>
-                  <InputLabel id="demo-simple-select-error-label">Hosteler</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-error-label"
-                    id="demo-simple-select-error"
+              <Grid container>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <TextField
+                    error={Boolean(formerror.email)}
+                    id="outlined-error-helper-text"
+                    label="College Email"
+                    helperText={formerror.email}
+                    name="email"
+                    // required = {true}
+                    value={formvalues.email}
+                    onChange={inputHandler}
+                    size='small'
+                    style={{ width: "90%", margin: "0.5rem" }}
+                    // autoComplete='off'
+                    onBlur={e => { validateInput(e, /^([a-zA-Z]){2,15}[2][12](([x]{3})|[0-9]{2,3})([0-9]){3}(-d)?@akgec.ac.in$/, "Enter Correct College Email Id") }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <FormControl sx={{ width: "90%", m: "0.5rem" }} error={Boolean(formerror.branch)} size='small'>
+                    <InputLabel id="demo-simple-select-error-label">Branch</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-error-label"
+                      id="demo-simple-select-error"
+                      value={formvalues.branch}
+                      label="Branch"
+                      name="branch"
+                      onChange={inputHandler}
+                      onBlur={e => { valdiatecheckbox(e, "Please Select Branch") }}
+                    >
+                      <MenuItem value="CSE">CSE</MenuItem>
+                      <MenuItem value="CSE(AI&ML)">CSE(AI&ML)</MenuItem>
+                      <MenuItem value="CSE(DS)">CSE(DS)</MenuItem>
+                      <MenuItem value="CS">CS</MenuItem>
+                      <MenuItem value="AI&ML">AI&ML</MenuItem>
+                      <MenuItem value="CSIT">CSIT</MenuItem>
+                      <MenuItem value="IT">IT</MenuItem>
+                      <MenuItem value="ECE">ECE</MenuItem>
+                      <MenuItem value="EN">EN</MenuItem>
+                      <MenuItem value="CSE(HINDI)">CSE(HINDI)</MenuItem>
+                      <MenuItem value="ME">ME</MenuItem>
+                      <MenuItem value="CE">CE</MenuItem>
+                    </Select>
+                    <FormHelperText>{formerror.branch}</FormHelperText>
+                  </FormControl>
+                </Grid>
+              </Grid>
+              <Grid container>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <FormControl sx={{ width: "90%", margin: "0.5rem", }} error={Boolean(formerror.year)} size='small'>
+                    <InputLabel id="demo-simple-select-error-label">Year</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-error-label"
+                      id="demo-simple-select-error"
+                      value={formvalues.year}
+                      label="Year"
+                      name="year"
+                      onChange={inputHandler}
+                      onBlur={e => { valdiatecheckbox(e, "Please Select Year") }}
+                    >
+                      <MenuItem value="I">I</MenuItem>
+                      <MenuItem value="II">II</MenuItem>
+                    </Select>
+                    <FormHelperText>{formerror.year}</FormHelperText>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <FormControl sx={{ width: "90%", margin: "0.5rem", }} error={Boolean(formerror.gender)} size='small'>
+                    <InputLabel id="demo-simple-select-error-label">Gender</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-error-label"
+                      id="demo-simple-select-error"
+                      value={formvalues.gender}
+                      label="Gender"
+                      name="gender"
+                      onChange={inputHandler}
+                      onBlur={e => { valdiatecheckbox(e, "Please Select Gender") }}
+                    >
+                      <MenuItem value="Male">Male</MenuItem>
+                      <MenuItem value="Female">Female</MenuItem>
+                      <MenuItem value="Others">Others</MenuItem>
+                      {/* <MenuItem value="Rather Not To Say">Rather Not To Say</MenuItem> */}
+                    </Select>
+                    <FormHelperText>{formerror.gender}</FormHelperText>
+                  </FormControl>
+                </Grid>
+              </Grid>
+              <Grid container>
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <FormControl sx={{ width: "90%", margin: "0.5rem", }} error={Boolean(formerror.contest)} size='small'>
+                    <InputLabel id="demo-simple-select-error-label">Contest</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-error-label"
+                      id="demo-simple-select-error"
+                      value={formvalues.contest}
+                      label="Contest"
+                      name="contest"
+                      onChange={inputHandler}
+                      onBlur={e => { valdiatecheckbox(e, "Select your Contest") }}
+                    >
+                      <MenuItem value="Ideathon">Ideathon</MenuItem>
+                      <MenuItem value="Blind Coding">Blind Coding</MenuItem>
+                    </Select>
+                    <FormHelperText>{formerror.contest}</FormHelperText>
+                  </FormControl>
+                </Grid>
+                {/* <Grid item xs={12} sm={6} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <FormControl sx={{ width: "90%", margin: "0.5rem 0" }} error={Boolean(formerror.residence)}>
+                  <label>Is Hosteler?</label>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name='residence'
                     value={formvalues.residence}
-                    label="Hosteler"
-                    name="residence"
                     onChange={inputHandler}
-                    onBlur={e => { valdiatecheckbox(e, "This field can't be empty") }}
+                    style={{ display: "flex" }}
+                    className='label'
                   >
-                    <MenuItem value="true">Yes</MenuItem>
-                    <MenuItem value="false">No</MenuItem>
-
-                  </Select>
+                    <FormControlLabel value="true" control={<Radio />} label={<Typography className='label'>True</Typography>} />
+                    <FormControlLabel value="false" control={<Radio />} label={<Typography className='label'>False</Typography>} />
+                  </RadioGroup>
                   <FormHelperText>{formerror.residence}</FormHelperText>
                 </FormControl>
+              </Grid> */}
+                <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "center" }}>
+                  <FormControl sx={{ width: "90%", margin: "0.5rem", }} error={Boolean(formerror.residence)} size='small'>
+                    <InputLabel id="demo-simple-select-error-label">Hosteler</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-error-label"
+                      id="demo-simple-select-error"
+                      value={formvalues.residence}
+                      label="Hosteler"
+                      name="residence"
+                      onChange={inputHandler}
+                      onBlur={e => { valdiatecheckbox(e, "This field can't be empty") }}
+                    >
+                      <MenuItem value="true">Yes</MenuItem>
+                      <MenuItem value="false">No</MenuItem>
+                    </Select>
+                    <FormHelperText>{formerror.residence}</FormHelperText>
+                  </FormControl>
+                </Grid>
               </Grid>
-            </Grid>
-
-            <Grid container className={formvalues.contest === "Ideathon" ? "" : "hide"}>
-              <Grid item xs={12} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <TextField
-                  error={Boolean(formerror.Ideadescription)}
-                  id="outlined-textarea"
-                  label="Describe Your Idea"
-                  placeholder="Present your idea in minimum 300 characters"
-                  rows={4}
-                  helperText={formerror.Ideadescription}
-                  value={formvalues.Ideadescription}
-                  multiline
-                  sx={{ width: "90%", margin: "0 0.5rem" }}
-                  onChange={inputHandler}
-                  name='Ideadescription'
-                />
-                <Typography sx={{ width: "90%", display: "flex", alignSelf: "flex-start", margin: "auto", color: "grey" }}>Characters : {wordcount
-                }/300</Typography>
+              <Grid container className={formvalues.contest === "Ideathon" ? "" : "hide"}>
+                <Grid item xs={12} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <TextField
+                    error={Boolean(formerror.Ideadescription)}
+                    id="outlined-textarea"
+                    label="Describe Your Idea"
+                    placeholder="Present your idea in minimum 300 characters"
+                    rows={4}
+                    helperText={formerror.Ideadescription}
+                    value={formvalues.Ideadescription}
+                    multiline
+                    sx={{ width: "90%", margin: "0 0.5rem" }}
+                    onChange={inputHandler}
+                    name='Ideadescription'
+                  />
+                  <Typography sx={{ width: "90%", display: "flex", alignSelf: "flex-start", margin: "auto", color: "grey" }}>Characters : {wordcount
+                  }/300</Typography>
+                </Grid>
               </Grid>
-            </Grid>
-
-            <div className="checkbox">
-              <div className='captcha recaptcha'>
-                <ReCAPTCHA
-                  sitekey={`${process.env.REACT_APP_SITE_KEY}`}
-                  onChange={validate_captcha}
-                />
+              <div className="checkbox">
+                <div className='captcha recaptcha'>
+                  <ReCAPTCHA
+                    sitekey={`${process.env.REACT_APP_SITE_KEY}`}
+                    onChange={validate_captcha}
+                  />
+                </div>
               </div>
-            </div>
-
-            <Button style={{ backgroundColor: "#353374", padding: "0.5rem", borderRadius: "20px" }} type='submit' variant="contained">Register</Button>
-          </form>
-
-          <img src={Poster} className='poster' alt="poster" />
-          {/* <img src={Poster} className='poster2' alt="poster" /> */}
-          <img src={csilogo} className='csiLogo' alt="logo" />
+              <Button style={{ backgroundColor: "#353374", padding: "0.5rem", borderRadius: "20px" }} type='submit' variant="contained">Register</Button>
+            </form>
+            <div className='posterImg'><img src={Poster} className='poster' alt="poster" /></div>
+            {/* <img src={Poster} className='poster2' alt="poster" /> */}
+            <img src={csilogo} className='csiLogo' alt="logo" />
+          </div>
         </div>
         <div className={popup ? 'pop-up-display' : 'hide'}>
           <div className='pop-up-box'>

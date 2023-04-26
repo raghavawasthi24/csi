@@ -10,7 +10,11 @@ body{
     width: 100%;
     height: 100%;
     font-family: 'Inter', sans-serif;
-    background-image: url("../src/assets/images/18.jpg");
+    /* background-color: black; */
+    background-image: url("../src/assets/images/Layer_1.svg");
     background-size: cover;
     background-repeat: no-repeat;
   }
+  ::-webkit-scrollbar {
+    display: none;
+}

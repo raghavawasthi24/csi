@@ -3,7 +3,7 @@ import "./Success.css";
 // import { useParams } from 'react-router-dom';
 // import axios from 'axios';
 // import successimg from "../../assets/images/success.svg";
-import poster from "../../assets/images/g20.jpeg";
+import poster from "../../assets/images/latestposter.jpeg";
 // import Poster from "../../assets/images/clip.png";
 import csilogo from "../../assets/images/csi-logo.png"
 
