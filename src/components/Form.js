@@ -378,6 +378,7 @@ const Form = () => {
           setpopup(true)
           setcaptcha_value(null);
         }).catch((err) => {
+          captcharef.current?.reset();
           if (err.response.data === "false")
             toast.error("Captcha not validated!")
           else if (err.response.data === "Not Registered") {
