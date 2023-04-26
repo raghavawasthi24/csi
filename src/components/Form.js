@@ -317,7 +317,7 @@ const Form = () => {
         if (item.code === formvalues.student_no.substring(2, formvalues.student_no.length - 3)) 
         setformvalues({ ...formvalues, branch: item.branch })
         
-        // return 0;
+        return 0;
       });
      
     }
