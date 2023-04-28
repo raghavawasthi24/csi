@@ -345,7 +345,7 @@ const Form = () => {
     if (regex.test(e.target.value.trim())) {
       e.target.value = e.target.value.trim();
       errors[e.target.name] = "";
-      // console.log("yy")
+      
     }
     else {
       // console.log("nn");
