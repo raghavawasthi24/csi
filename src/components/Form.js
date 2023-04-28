@@ -320,6 +320,7 @@ const Form = () => {
 //     else {
 //       setSubmitcall(false);
 //     }
+    setSubmitcall(false);
     toast.error("Registrations are Closed!")
   }
 
