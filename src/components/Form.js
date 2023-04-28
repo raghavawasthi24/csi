@@ -400,6 +400,9 @@ const Form = () => {
           else if (err.response.data === "Too many requests, please try again later.") {
             toast.error("Please try again later!")
           }
+          else if (err.response.data === "Registration Full") {
+            toast.error("Seats are full for blind coding!")
+          }
           setLoading(false)
           // console.log(err)
         })
