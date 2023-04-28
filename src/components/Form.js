@@ -42,61 +42,61 @@ const Form = () => {
 
   // let code = [10, 153, 154, 12, 164, 13, 11, 169, 21, 31, 00, 40];
   // let branch_code = [CSE, CSE(AI & ML), CSE(DS), CS, AI & ML, IT, CS, CSIT, IT, ECE, EN, CSE(HINDI), ME, CE]
-  const branch_code = [{
-    branch: "CSE",
+//   const branch_code = [{
+//     branch: "CSE",
 
-    code: "10"
-  }, {
-    branch:
-      "CSE(AI&ML)",
+//     code: "10"
+//   }, {
+//     branch:
+//       "CSE(AI&ML)",
 
-    code: "153"
-  }, {
-    branch:
-      "CSE(DS)",
+//     code: "153"
+//   }, {
+//     branch:
+//       "CSE(DS)",
 
-    code: "154"
-  }, {
-    branch:
-      "CS",
+//     code: "154"
+//   }, {
+//     branch:
+//       "CS",
 
-    code: "12"
-  }, {
-    branch:
-      "AI&ML",
+//     code: "12"
+//   }, {
+//     branch:
+//       "AI&ML",
 
-    code: "164"
-  }, {
-    branch:
-      "IT",
+//     code: "164"
+//   }, {
+//     branch:
+//       "IT",
 
-    code: "13"
-  }, {
-    branch:
+//     code: "13"
+//   }, {
+//     branch:
 
-      "CSIT",
+//       "CSIT",
 
-    code: "11"
-  }, {
-    branch:
-      "CSE(HINDI)",
-    code: "169"
-  }, {
-    branch:
-      "EN",
-    code: "21"
-  }, {
-    branch: "ECE",
-    code: "31"
-  }, {
-    branch:
-      "CE",
-    code: "00"
-  }, {
-    branch:
-      "ME",
-    code: "40"
-  },]
+//     code: "11"
+//   }, {
+//     branch:
+//       "CSE(HINDI)",
+//     code: "169"
+//   }, {
+//     branch:
+//       "EN",
+//     code: "21"
+//   }, {
+//     branch: "ECE",
+//     code: "31"
+//   }, {
+//     branch:
+//       "CE",
+//     code: "00"
+//   }, {
+//     branch:
+//       "ME",
+//     code: "40"
+//   },]
 
   const initialvalues = {
     full_name: "",
