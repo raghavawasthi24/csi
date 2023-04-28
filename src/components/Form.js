@@ -213,9 +213,7 @@ const Form = () => {
     //VALIDATING EMAIL
 
     if (
-      regex_email.test(formvalues.email.trim()) &&
-      formvalues.email.includes(formvalues.student_no)
-    ) {
+      regex_email.test(formvalues.email.trim()) {
       errors.email = "";
       formvalues.email = formvalues.email.trim();
     }
