@@ -211,11 +211,25 @@ const Form = () => {
     }
 
     //VALIDATING EMAIL
-
-    if (
+ if (
       regex_email.test(formvalues.email.trim())) {
-      errors.email = "";
-      formvalues.email = formvalues.email.trim();
+      if (formvalues.branch === "AI&ML") {
+        errors.email = "";
+        formvalues.email = formvalues.email.trim();
+      }
+      else {
+        if (formvalues.email.includes(formvalues.student_no)) {
+          errors.email = "";
+          formvalues.email = formvalues.email.trim();
+        }
+        else {
+          setnoerror(false);
+          errors.email = "Please check your email again";
+          captcharef.current?.reset();
+          return errors;
+        }
+      }
+
     }
     else {
       setnoerror(false);
@@ -223,6 +237,7 @@ const Form = () => {
       captcharef.current?.reset();
       return errors;
     }
+
 
     //VALIDATING BRANCH
 
