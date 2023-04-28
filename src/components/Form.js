@@ -323,17 +323,17 @@ const Form = () => {
   }
 
   const validateInput = (e, regex, err) => {
-    if (e.target.name === "student_no") {
+//     if (e.target.name === "student_no") {
 
-      branch_code.map((item) => {
-        // console.log(item);
-        if (item.code === formvalues.student_no.substring(2, formvalues.student_no.length - 3)) 
-        setformvalues({ ...formvalues, branch: item.branch })
+//       branch_code.map((item) => {
+//         // console.log(item);
+//         if (item.code === formvalues.student_no.substring(2, formvalues.student_no.length - 3)) 
+//         setformvalues({ ...formvalues, branch: item.branch })
         
-        return 0;
-      });
+//         return 0;
+//       });
      
-    }
+//     }
     if (e.target.name === "roll_no") {
         if(formvalues.roll_no.substring(1,2)==="1")
         setformvalues({ ...formvalues, year: "II" })
