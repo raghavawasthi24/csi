@@ -165,7 +165,7 @@ const Form = () => {
     }
     //VALIDATING STUDENTNO
 
-    if (regex_student.test(formvalues.student_no.trim())) {
+    if (regex_student.test(formvalues.student_no.trim())){
       errors.student_no = "";
       formvalues.student_no = formvalues.student_no.trim();
       // for(let i=0;i<code.length;i++)
@@ -213,7 +213,7 @@ const Form = () => {
     //VALIDATING EMAIL
 
     if (
-      regex_email.test(formvalues.email.trim()) {
+      regex_email.test(formvalues.email.trim())) {
       errors.email = "";
       formvalues.email = formvalues.email.trim();
     }
