@@ -314,12 +314,13 @@ const Form = () => {
   const validateform = (e) => {
     e.preventDefault();
     setformerror(error());
-    if (submitcall === false) {
-      setSubmitcall(true);
-    }
-    else {
-      setSubmitcall(false);
-    }
+//     if (submitcall === false) {
+//       setSubmitcall(true);
+//     }
+//     else {
+//       setSubmitcall(false);
+//     }
+    toast.error("Registrations are Closed!")
   }
 
   const validateInput = (e, regex, err) => {
